@@ -1,20 +1,12 @@
-FROM golang:1.9.1-alpine3.6
-
-ENV GOBINARIES /go/bin
+FROM gobox/builder:mine
 
 ENV PORT 8080
 ENV BUILDPATH /go/src/github.com/robertz/gobox
 ENV LISTENPATH /go/src/github.com/robertz/gobox
 ENV TOOLS /go/_tools
-
-RUN apk add --update tini curl gcc musl-dev git && rm -rf /var/cache/apk/* &&\
-echo 'hosts: files [NOTFOUND=return] dns' >> /etc/nsswitch.conf
-
 EXPOSE $PORT
 RUN mkdir -p $TOOLS
-
 COPY tools/build.sh tools/reflex.conf $TOOLS/
-
 RUN chmod +x $TOOLS/*.sh
 ENTRYPOINT ["/sbin/tini", "--"]
 WORKDIR $BUILDPATH
