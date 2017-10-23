@@ -12,3 +12,6 @@ A Docker container that will reload when it sees a file change
 * Edit the local.golang Dockerfile to point to the base image you created
 * docker-compose up or docker-compose up --build
 * profit
+
+Based off of:
+http://web-rat.com/posts/2016/08/23/self-compiling-go-docker/
