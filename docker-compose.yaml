@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: ./_dev/dockerfiles
+      dockerfile: local.golang
+    ports:
+      - "80:8080"
+    volumes:
+      - .:/go/src/github.com/robertz/gobox
